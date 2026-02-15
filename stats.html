@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compression Stats Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { background: #1e1e1e; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .row { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 30px; width: 100%; max-width: 1200px; }
+        .card { background: #2d2d2d; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        h2 { margin-top: 0; font-size: 16px; color: #aaa; text-align: center; }
+        canvas { max-height: 300px; }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="card">
+            <h2>JS vs CSS (Uncompressed)</h2>
+            <canvas id="pieType"></canvas>
+        </div>
+        <div class="card">
+            <h2>Compression Efficiency (Total Size)</h2>
+            <canvas id="pieAlgo"></canvas>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card" style="width: 100%;">
+            <h2>Trade-off: Size vs Time</h2>
+            <canvas id="lineChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const stats = {"total":{"unSize":2612237,"br":{"size":335239,"enc":924.0573999999999,"dec":110.97229999999999,"perc":12.83340676975328},"zstd":{"size":346885,"enc":571.2293999999999,"dec":110.1917,"perc":13.279231555176654},"gz":{"size":426351,"enc":130.2029,"dec":45.4524,"perc":16.321298565176132}},"js":{"unSize":861803,"br":{"size":126657,"enc":339.1176,"dec":91.475,"perc":14.696746240150011},"zstd":{"size":133414,"enc":205.1413,"dec":91.2199,"perc":15.4808001364581},"gz":{"size":155890,"enc":99.1159,"dec":21.959,"perc":18.088820762981793}},"css":{"unSize":1750434,"br":{"size":208582,"enc":584.9398,"dec":19.4973,"perc":11.916016256539805},"zstd":{"size":213471,"enc":366.0881,"dec":18.9718,"perc":12.19531841817515},"gz":{"size":270461,"enc":31.087,"dec":23.4934,"perc":15.451082417274803}}};
+        
+        // 1. JS vs CSS Pie
+        new Chart(document.getElementById('pieType'), {
+            type: 'doughnut',
+            data: {
+                labels: ['JS', 'CSS'],
+                datasets: [{
+                    data: [stats.js.unSize, stats.css.unSize],
+                    backgroundColor: ['#f1e05a', '#563d7c'],
+                    borderWidth: 0
+                }]
+            }
+        });
+
+        // 2. Algorithm Pie
+        new Chart(document.getElementById('pieAlgo'), {
+            type: 'pie',
+            data: {
+                labels: ['Brotli', 'ZSTD', 'GZIP'],
+                datasets: [{
+                    data: [stats.total.br.size, stats.total.zstd.size, stats.total.gz.size],
+                    backgroundColor: ['#28a745', '#17a2b8', '#007bff'],
+                    borderWidth: 0
+                }]
+            }
+        });
+
+        // 3. Trade-off Combo Chart
+        new Chart(document.getElementById('lineChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Brotli', 'ZSTD', 'GZIP'],
+                datasets: [
+                    {
+                        type: 'bar',
+                        label: 'Size (KB)',
+                        data: [stats.total.br.size/1024, stats.total.zstd.size/1024, stats.total.gz.size/1024],
+                        backgroundColor: '#28a745',
+                        yAxisID: 'ySize'
+                    },
+                    {
+                        type: 'line',
+                        label: 'Compression (ms)',
+                        data: [stats.total.br.enc, stats.total.zstd.enc, stats.total.gz.enc],
+                        borderColor: '#17a2b8',
+                        yAxisID: 'yTime'
+                    },
+                    {
+                        type: 'line',
+                        label: 'Decompression (ms)',
+                        data: [stats.total.br.dec, stats.total.zstd.dec, stats.total.gz.dec],
+                        borderColor: '#007bff',
+                        yAxisID: 'yTime'
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    ySize: { type: 'linear', position: 'left', title: {display: true, text: 'Size (KB)'} },
+                    yTime: { type: 'linear', position: 'right', title: {display: true, text: 'Time (ms)'} }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

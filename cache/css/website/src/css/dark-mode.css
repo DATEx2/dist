@@ -1,0 +1,22 @@
+/* Basic body style for preview */
+html.dark-mode, html.dark-mode :root {
+		--bg-color: #03070f;
+		--bgw: #03070f;
+		--price-color: #12b36c;
+	}
+html.dark-mode .pdl-wrap {
+		margin: 0;
+		overflow-x: hidden;
+		background-color: #1a1a1a;
+		/* --- Fix FOUC & Flickering - but not needed on DATEx2.bike website because we have fully compiled HTML--- */
+		/* opacity: 0;*/
+		transition: opacity 0.6s ease-out;
+		background-color: #03070f;
+	}
+.ins-tiles, div.ecwid-productBrowser {
+    background-color: var(--bgw) !important;
+}
+html.dark-mode .ecwid-pb-placeholder {
+	display: none;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRhcmstbW9kZS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsaUNBQWlDO0FBRWhDO0VBQ0MsbUJBQW1CO0VBQ25CLGNBQWM7RUFDZCxzQkFBc0I7Q0FDdkI7QUFFQTtFQUNDLFNBQVM7RUFDVCxrQkFBa0I7RUFDbEIseUJBQXlCO0VBQ3pCLDZHQUE2RztFQUM3RyxlQUFhO0VBQ2IsaUNBQWlDO0VBQ2pDLHlCQUF5QjtDQUMxQjtBQUVEO0lBQ0ksdUNBQXVDO0FBQzNDO0FBQ0E7Q0FDQyxhQUFhO0FBQ2QiLCJmaWxlIjoiZGFyay1tb2RlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIEJhc2ljIGJvZHkgc3R5bGUgZm9yIHByZXZpZXcgKi9cclxuaHRtbC5kYXJrLW1vZGUge1xyXG5cdCYsIDpyb290IHtcclxuXHRcdC0tYmctY29sb3I6ICMwMzA3MGY7XHJcblx0XHQtLWJndzogIzAzMDcwZjtcclxuXHRcdC0tcHJpY2UtY29sb3I6ICMxMmIzNmM7XHJcblx0fVxyXG5cclxuXHQucGRsLXdyYXAge1xyXG5cdFx0bWFyZ2luOiAwO1xyXG5cdFx0b3ZlcmZsb3cteDogaGlkZGVuO1xyXG5cdFx0YmFja2dyb3VuZC1jb2xvcjogIzFhMWExYTtcclxuXHRcdC8qIC0tLSBGaXggRk9VQyAmIEZsaWNrZXJpbmcgLSBidXQgbm90IG5lZWRlZCBvbiBEQVRFeDIuYmlrZSB3ZWJzaXRlIGJlY2F1c2Ugd2UgaGF2ZSBmdWxseSBjb21waWxlZCBIVE1MLS0tICovXHJcblx0XHQvLyBvcGFjaXR5OiAwO1xyXG5cdFx0dHJhbnNpdGlvbjogb3BhY2l0eSAwLjZzIGVhc2Utb3V0O1xyXG5cdFx0YmFja2dyb3VuZC1jb2xvcjogIzAzMDcwZjtcclxuXHR9XHJcbn1cclxuLmlucy10aWxlcywgZGl2LmVjd2lkLXByb2R1Y3RCcm93c2VyIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWJndykgIWltcG9ydGFudDtcclxufVxyXG5odG1sLmRhcmstbW9kZSAuZWN3aWQtcGItcGxhY2Vob2xkZXIge1xyXG5cdGRpc3BsYXk6IG5vbmU7XHJcbn0iXX0= */

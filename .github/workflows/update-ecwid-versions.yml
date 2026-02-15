@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - '**/*.htm'
+      - 'css/**'
 
 jobs:
   update-versions:

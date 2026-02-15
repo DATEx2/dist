@@ -1,0 +1,1122 @@
+<div class='pdl-wrap o-BCx3-DIALS'>
+<!-- HERO SECTION -->
+<header class='relative w-full h-[100dvh] overflow-hidden flex flex-col items-center justify-center py-4'>
+
+
+    <div class='container mx-auto px-4 relative z-10 text-center flex flex-col h-full justify-center gap-2 sm:gap-6'>
+
+        <!-- TEXT BLOCK -->
+        <div class='flex-shrink-0'>
+            <!-- Title -->
+            <h1 class='main-title font-tech text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500 mb-2'>
+                DATE BCx3
+                <span class='text-white text-xl sm:text-2xl lg:text-3xl block mt-1 sm:mt-2 font-sans font-medium'>
+                    Inteligentna ładowarka trójnapięciowa
+                </span>
+            </h1>
+
+            <!-- Subtitle & Buttons Grid -->
+            <div class='max-w-4xl mx-auto mb-4 sm:mb-8 hidden sm:block'>
+                <p class='text-gray-500 text-xs sm:text-sm uppercase tracking-widest font-medium mb-3 text-center'>
+                    The only charger you"ll ever need
+                </p>
+
+                <div class='grid grid-cols-2 gap-x-8 gap-y-4'>
+                    <!-- Row 1: Left Text (Voltages) -->
+                    <div class='text-right flex items-center justify-end text-sm sm:text-lg text-gray-300'>
+                        <span><span class='text-brand-neon font-bold'>36V</span> · <span class='text-brand-neon font-bold'>48V</span> · <span
+        class='text-brand-neon font-bold'>52V</span> Uniwersalny</span>
+                    </div>
+
+                    <!-- Row 1: Right Text (Amperage) -->
+                    <div class='text-left flex items-center justify-start text-sm sm:text-lg text-gray-300'>
+                        <span><span class='text-brand-neon font-bold'>2A · 10A</span> Zmienna prędkość</span>
+                    </div>
+
+                    <!-- Row 2: Buttons -->
+                    <div class='flex justify-end'>
+                        <button onclick='scrollToBuyNow()' class='group relative px-5 py-2 sm:px-6 sm:py-3 bg-brand-neon text-brand-dark font-bold rounded-lg overflow-hidden shadow-[0_0_15px_rgba(0,242,255,0.3)] transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(0,242,255,0.5)] text-xs sm:text-sm'>
+                            <span class='relative z-10 flex items-center gap-2'>
+                                Zdobądź swój teraz
+                                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='group-hover:translate-x-1 transition-transform w-3.5 h-3.5'><path d='M5 12h14' /><path d='m12 5 7 7-7 7' /></svg>
+                            </span>
+                        </button>
+                    </div>
+                    <div class='flex justify-start'>
+                        <button onclick='scrollToFeatures()' class='px-5 py-2 sm:px-6 sm:py-3 bg-white/5 border border-white/10 text-white font-bold rounded-lg hover:bg-white/10 transition-colors backdrop-blur-sm text-xs sm:text-sm'>
+                            Zobacz specyfikację
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIDEO BLOCK -->
+        <div class='flex-grow-0 flex-shrink-1 relative w-full flex justify-center items-center min-h-[45vh] hero-video-wrapper'>
+            <div id='hero-video-container'
+                class='relative hover:scale-125 transition-all duration-300 ease-out z-10 group rounded-2xl border border-white/10 bg-brand-panel overflow-hidden shadow-2xl flex items-center justify-center h-full aspect-[4/3] w-auto mx-auto hero-video-inner'>
+
+                <div id='video-poster-layer' 
+                    class='absolute inset-0 z-20 w-full h-full bg-contain bg-center bg-no-repeat bg-brand-panel o-BCx3-220VAC-EU'
+                    style='background-image: var(--bg);'
+                    role='img' aria-label='DATE BCx3 Preview'>
+                </div>
+
+                <video id='hero-video-main' class='absolute inset-0 z-10 w-full h-full object-contain opacity-0' muted loop playsinline preload='none'>
+                    
+                    <source data-src='BCx3.h265.mp4' type='video/mp4; codecs=hvc1'>
+                    
+
+                    <source data-src='BCx3.h264.mp4' type='video/mp4'>
+                    
+                </video>
+
+                <!-- Video Controls (Bottom Bar) -->
+                <div id='hero-video-controls' class='absolute bottom-0 left-0 right-0 z-30 flex items-center justify-between px-4 py-3 from-black/80 to-transparent opacity-0 transition-all duration-300 pointer-events-none'>
+                    <!-- Play/Pause Button -->
+                    <button id='video-play-pause-btn' class='pointer-events-auto text-white hover:text-brand-neon transition-colors' aria-label='Play/Pause'>
+                        <!-- Play Icon -->
+                        <svg id='play-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='w-7 h-7'>
+                            <path d='M8 5v14l11-7z' />
+                        </svg>
+                        <!-- Pause Icon (hidden initially) -->
+                        <svg id='pause-icon' class='hidden w-7 h-7' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>
+                            <path d='M6 4h4v16H6V4zm8 0h4v16h-4V4z' />
+                        </svg>
+                    </button>
+
+                    <!-- Fullscreen Button -->
+                    <button id='video-fullscreen-btn' class='pointer-events-auto text-white hover:text-brand-neon transition-colors' aria-label='Fullscreen'>
+                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' class='w-6 h-6'>
+                            <path d='M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3' />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+  
+  <!-- UNIFIED CARDS GRID - Super Flexible Template -->
+<section id='features' class='py-20 bg-brand-dark/50 relative reveal' >
+    
+    
+    
+    
+    <div class='container mx-auto px-4 sm:px-6 '>
+    
+        <!-- Section Header -->
+        
+        <div class='flex items-center gap-4 mb-12'>
+            
+            <div class='h-px flex-1 bg-gradient-to-r from-transparent to-brand-neon/30'></div>
+            
+            <h2 class='font-tech text-2xl font-bold text-white tracking-widest uppercase'>Główne cechy </h2>
+            
+            <div class='h-px flex-1 bg-gradient-to-l from-transparent to-brand-neon/30'></div>
+            
+        </div>
+        
+        
+
+        <!-- Cards Grid -->
+        <div class='grid grid-cols-1 md:grid-cols-2 gap-6'>
+            
+            
+                <!-- BCx3 Feature Card - New UI Reference -->
+<div class='group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] '>
+    <div class='relative h-full w-full bg-brand-panel rounded-[22px] flex flex-col'>
+        <div class='feature-img-container h-64 relative'>
+            <div class='snip BCx3 o-BCx3-220VAC-FRONT snip-sprite absolute inset-0 group-hover:scale-120 transition-all duration-700'></div>
+        </div>
+        <div class='p-8 flex flex-col flex-grow relative z-10 text-left'>
+            <h3 class='text-2xl font-bold mb-4 text-center text-white group-hover:text-brand-neon transition-colors'>Sterowanie potrójnym napięciem</h3>
+            <div class='text-gray-400 leading-relaxed transition-colors duration-1000 ease-out group-hover:text-white [&_b]:transition-colors [&_b]:duration-1000 [&_b]:group-hover:text-brand-neon [&_strong]:transition-colors [&_strong]:duration-1000 [&_strong]:group-hover:text-brand-neon feature-card-desc'><p>The only charger you"ll ever need. Full control via intuitive toggles:</p>
+      <ul>
+        <li><b>Napięcie:</b> Przełączaj się między systemami <b>36V</b>, <b>48V</b> i <b>52V</b> w mgnieniu oka. </li>
+        <li><b>Tryb pracy:</b> Wybierz <b>90%</b> ładowania, aby podwoić żywotność baterii. </li>
+        <li><b>Prędkość:</b> Od delikatnej <b>2A</b> do bardzo szybkiej <b>10A</b> </li>
+      </ul></div>
+        </div>
+    </div>
+</div>    
+            
+            
+            
+
+            
+                <!-- BCx3 Feature Card - New UI Reference -->
+<div class='group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] '>
+    <div class='relative h-full w-full bg-brand-panel rounded-[22px] flex flex-col'>
+        <div class='feature-img-container h-64 relative'>
+            <div class='snip BCx3 o-BCx3-DIALS snip-sprite absolute inset-0 group-hover:scale-120 transition-all duration-700'></div>
+        </div>
+        <div class='p-8 flex flex-col flex-grow relative z-10 text-left'>
+            <h3 class='text-2xl font-bold mb-4 text-center text-white group-hover:text-brand-neon transition-colors'>Przedłuż żywotność baterii</h3>
+            <div class='text-gray-400 leading-relaxed transition-colors duration-1000 ease-out group-hover:text-white [&_b]:transition-colors [&_b]:duration-1000 [&_b]:group-hover:text-brand-neon [&_strong]:transition-colors [&_strong]:duration-1000 [&_strong]:group-hover:text-brand-neon feature-card-desc'><p>Dramatically increase your battery"s life from ~400 to <b>600-800 cycles</b> by using the 90% setting (available for 48V & 52V
+        nominal).<br /><br />
+        Use the <b>2A setting</b> overnight to perfectly balance cells and keep the pack cool.</p></div>
+        </div>
+    </div>
+</div>    
+            
+            
+            
+
+            
+                <!-- BCx3 Feature Card - New UI Reference -->
+<div class='group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] '>
+    <div class='relative h-full w-full bg-brand-panel rounded-[22px] flex flex-col'>
+        <div class='feature-img-container h-64 relative'>
+            <div class='snip BCx3 o-BCx3-SMART-PLUG snip-sprite absolute inset-0 group-hover:scale-120 transition-all duration-700'></div>
+        </div>
+        <div class='p-8 flex flex-col flex-grow relative z-10 text-left'>
+            <h3 class='text-2xl font-bold mb-4 text-center text-white group-hover:text-brand-neon transition-colors'>Inteligentny tryb przechowywania</h3>
+            <div class='text-gray-400 leading-relaxed transition-colors duration-1000 ease-out group-hover:text-white [&_b]:transition-colors [&_b]:duration-1000 [&_b]:group-hover:text-brand-neon [&_strong]:transition-colors [&_strong]:duration-1000 [&_strong]:group-hover:text-brand-neon feature-card-desc'><p>Zabezpieczenie na zimę jest proste. Ustaw pokrętło na 90% (Tryb Życia) lub monitoruj ręcznie poziom 75% przechowywania.<br /> Połącz z inteligentnym gniazdkiem, aby co tydzień „budzić” baterię. </p></div>
+        </div>
+    </div>
+</div>    
+            
+            
+            
+
+            
+                <!-- BCx3 Feature Card - New UI Reference -->
+<div class='group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] '>
+    <div class='relative h-full w-full bg-brand-panel rounded-[22px] flex flex-col'>
+        <div class='feature-img-container h-64 relative'>
+            <div class='snip BCx3 t-DATEx2 snip-sprite absolute inset-0 group-hover:scale-120 transition-all duration-700'></div>
+        </div>
+        <div class='p-8 flex flex-col flex-grow relative z-10 text-left'>
+            <h3 class='text-2xl font-bold mb-4 text-center text-white group-hover:text-brand-neon transition-colors'>Prawdziwie uniwersalny</h3>
+            <div class='text-gray-400 leading-relaxed transition-colors duration-1000 ease-out group-hover:text-white [&_b]:transition-colors [&_b]:duration-1000 [&_b]:group-hover:text-brand-neon [&_strong]:transition-colors [&_strong]:duration-1000 [&_strong]:group-hover:text-brand-neon feature-card-desc'><p>Jedna ładowarka, która pasuje do wszystkiego. Niezależnie od tego, czy masz skuter 36V, MATE X 48V, czy model 52V zbudowany na zamówienie, DATE BCx3 dostosowuje się natychmiast.
+        <b>Trzy razy więcej możliwości, jedno urządzenie.</b> 
+      </p></div>
+        </div>
+    </div>
+</div>    
+            
+            
+            
+        </div>
+    </div>
+</section>
+ 
+
+  <!-- UNIFIED CARDS GRID - Super Flexible Template -->
+<section id='adapters' class='py-20 container mx-auto px-6 reveal' >
+    
+    
+    
+    
+    <div class='container mx-auto px-4 sm:px-6 '>
+    
+        <!-- Section Header -->
+        
+        <div class='flex items-center gap-4 mb-12'>
+            
+            <div class='h-px flex-1 bg-gradient-to-r from-transparent to-brand-neon/30'></div>
+            
+            <h2 class='font-tech text-2xl font-bold text-white tracking-widest uppercase'>Adaptery i bezpieczeństwo </h2>
+            
+            <div class='h-px flex-1 bg-gradient-to-l from-transparent to-brand-neon/30'></div>
+            
+        </div>
+        
+        
+
+        <!-- Cards Grid -->
+        <div class='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4'>
+            
+            
+            
+            <div class='group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] '>
+                
+                <div class='allow-overflow-light relative  h-full w-full bg-[#1a1a1a] rounded-[22px] flex flex-col'>
+                    <!-- Image Container -->
+                    
+                    <div class='h-48 relative bg-black/20 rounded-t-[22px]'>
+                        <div class='snip BCx3 o-ADAPTER-1M-XT90S-F--RCA-M snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-700'></div>
+                    </div>
+                    
+                    
+                    <!-- Content Container -->
+                    <div class='p-6 text-center flex flex-col flex-grow relative z-10'>
+                        <!-- VALUE (for labeled cards like speeds) -->
+                        
+                        
+                        <!-- TITLE -->
+                        
+                        <h3 class=' transition-colors duration-1000 ease-out text-base font-bold mb-2 text-gray-900 dark:text-white group-hover:text-brand-neon'><span class='text-lg'>◎</span> Adapter RCA starszy model</h3>
+                        
+                        
+                        <!-- LABEL (for labeled cards) -->
+                        
+                        
+                        <!-- SUBTITLE / BADGE (for voltage cards, etc.) -->
+                        
+                        
+                        <!-- CUSTOM HTML CONTENT -->
+                        
+                        
+                        <!-- DESCRIPTION -->
+                        
+                        <div class='text-xs text-gray-400 group-hover:text-white transition-text-color duration-500 ease-out  [&_b]:transition-colors [&_b]:duration-500 [&_b]:group-hover:text-brand-neon [&_strong]:transition-colors [&_strong]:duration-500 [&_strong]:group-hover:text-brand-neon'>High-quality <b>Amphenol RCA</b> adapter. Niezbędny do oryginalnych baterii w starszych modelach MATE/ENGWE.</div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+
+            
+            
+            <div class='group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] '>
+                
+                <div class='allow-overflow-light relative  h-full w-full bg-[#1a1a1a] rounded-[22px] flex flex-col'>
+                    <!-- Image Container -->
+                    
+                    <div class='h-48 relative bg-black/20 rounded-t-[22px]'>
+                        <div class='snip BCx3 o-ADAPTER-1M-XT90S-F--3-PIN-M snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-700'></div>
+                    </div>
+                    
+                    
+                    <!-- Content Container -->
+                    <div class='p-6 text-center flex flex-col flex-grow relative z-10'>
+                        <!-- VALUE (for labeled cards like speeds) -->
+                        
+                        
+                        <!-- TITLE -->
+                        
+                        <h3 class=' transition-colors duration-1000 ease-out text-base font-bold mb-2 text-gray-900 dark:text-white group-hover:text-brand-neon'><span class='text-lg'>∴</span> Nowoczesny Adapter 3-Piny</h3>
+                        
+                        
+                        <!-- LABEL (for labeled cards) -->
+                        
+                        
+                        <!-- SUBTITLE / BADGE (for voltage cards, etc.) -->
+                        
+                        
+                        <!-- CUSTOM HTML CONTENT -->
+                        
+                        
+                        <!-- DESCRIPTION -->
+                        
+                        <div class='text-xs text-gray-400 group-hover:text-white transition-text-color duration-500 ease-out  [&_b]:transition-colors [&_b]:duration-500 [&_b]:group-hover:text-brand-neon [&_strong]:transition-colors [&_strong]:duration-500 [&_strong]:group-hover:text-brand-neon'>Przemysłowe złącza przeznaczone dla nowszych akumulatorów. Bezpieczny mechanizm blokujący zapobiega przypadkowemu odłączeniu.</div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+
+            
+            
+            <div class='group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] '>
+                
+                <div class='allow-overflow-light relative  h-full w-full bg-[#1a1a1a] rounded-[22px] flex flex-col'>
+                    <!-- Image Container -->
+                    
+                    <div class='h-48 relative bg-black/20 rounded-t-[22px]'>
+                        <div class='snip BCx3 o-ADAPTER-1M-XT90S-F--XT60U-M snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-700'></div>
+                    </div>
+                    
+                    
+                    <!-- Content Container -->
+                    <div class='p-6 text-center flex flex-col flex-grow relative z-10'>
+                        <!-- VALUE (for labeled cards like speeds) -->
+                        
+                        
+                        <!-- TITLE -->
+                        
+                        <h3 class=' transition-colors duration-1000 ease-out text-base font-bold mb-2 text-gray-900 dark:text-white group-hover:text-brand-neon'>Adapter XT60U</h3>
+                        
+                        
+                        <!-- LABEL (for labeled cards) -->
+                        
+                        
+                        <!-- SUBTITLE / BADGE (for voltage cards, etc.) -->
+                        
+                        
+                        <!-- CUSTOM HTML CONTENT -->
+                        
+                        
+                        <!-- DESCRIPTION -->
+                        
+                        <div class='text-xs text-gray-400 group-hover:text-white transition-text-color duration-500 ease-out  [&_b]:transition-colors [&_b]:duration-500 [&_b]:group-hover:text-brand-neon [&_strong]:transition-colors [&_strong]:duration-500 [&_strong]:group-hover:text-brand-neon'>High-temp standard dla indywidualnych konfiguracji. <b>Oryginalny wtyk AMASS</b> zapewnia maksymalną wydajność.</div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+
+            
+            
+            <div class='group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] '>
+                
+                <div class='allow-overflow-light relative  h-full w-full bg-[#1a1a1a] rounded-[22px] flex flex-col'>
+                    <!-- Image Container -->
+                    
+                    <div class='h-48 relative bg-black/20 rounded-t-[22px]'>
+                        <div class='snip BCx3 o-ADAPTER-2M-XT90S-F--XT90-M snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-700'></div>
+                    </div>
+                    
+                    
+                    <!-- Content Container -->
+                    <div class='p-6 text-center flex flex-col flex-grow relative z-10'>
+                        <!-- VALUE (for labeled cards like speeds) -->
+                        
+                        
+                        <!-- TITLE -->
+                        
+                        <h3 class=' transition-colors duration-1000 ease-out text-base font-bold mb-2 text-gray-900 dark:text-white group-hover:text-brand-neon'><span class='text-lg'>↔</span> Gniazdko za daleko?</h3>
+                        
+                        
+                        <!-- LABEL (for labeled cards) -->
+                        
+                        
+                        <!-- SUBTITLE / BADGE (for voltage cards, etc.) -->
+                        
+                        
+                        <!-- CUSTOM HTML CONTENT -->
+                        
+                        
+                        <!-- DESCRIPTION -->
+                        
+                        <div class='text-xs text-gray-400 group-hover:text-white transition-text-color duration-500 ease-out  [&_b]:transition-colors [&_b]:duration-500 [&_b]:group-hover:text-brand-neon [&_strong]:transition-colors [&_strong]:duration-500 [&_strong]:group-hover:text-brand-neon'>Problem rozwiązany. Ten <b>2-metrowy przedłużacz</b> - XT90S żeński do XT90 męski.<br />
+        Przedłużenie kabli pozwala na ładowanie z odległości do <b>5,5 metra</b> od gniazdka!</div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+
+            
+            
+            <div class='group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] '>
+                
+                <div class='allow-overflow-light relative  h-full w-full bg-[#1a1a1a] rounded-[22px] flex flex-col'>
+                    <!-- Image Container -->
+                    
+                    <div class='h-48 relative bg-black/20 rounded-t-[22px]'>
+                        <div class='snip BCx3 o-XT90-M snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-700'></div>
+                    </div>
+                    
+                    
+                    <!-- Content Container -->
+                    <div class='p-6 text-center flex flex-col flex-grow relative z-10'>
+                        <!-- VALUE (for labeled cards like speeds) -->
+                        
+                        
+                        <!-- TITLE -->
+                        
+                        <h3 class=' transition-colors duration-1000 ease-out text-base font-bold mb-2 text-gray-900 dark:text-white group-hover:text-brand-neon'><span class='text-lg'>⚠️</span> Technologia Anty-iskrowa</h3>
+                        
+                        
+                        <!-- LABEL (for labeled cards) -->
+                        
+                        
+                        <!-- SUBTITLE / BADGE (for voltage cards, etc.) -->
+                        
+                        
+                        <!-- CUSTOM HTML CONTENT -->
+                        
+                        
+                        <!-- DESCRIPTION -->
+                        
+                        <div class='text-xs text-gray-400 group-hover:text-white transition-text-color duration-500 ease-out  [&_b]:transition-colors [&_b]:duration-500 [&_b]:group-hover:text-brand-neon [&_strong]:transition-colors [&_strong]:duration-500 [&_strong]:group-hover:text-brand-neon'><b>Brak iskier. Bez obaw.</b> Zintegrowany rezystor w żółtym złączu XT90S absorbuje przepięcie, całkowicie eliminując ten niepokojący dźwięk "popy".</div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</section>
+
+
+  <!-- LABELED CARDS GRID - For items with prominent value display (speeds, ratings, etc.) -->
+<section id='input-plugs' class='cs-section py-20 relative reveal'>
+    
+    <div class='cs-container container mx-auto px-6 relative z-10'>
+        <!-- Section Header with Subtitle -->
+        <div class='cs-header-wrapper max-w-3xl mx-auto text-center mb-16'>
+            <h2 class='cs-title font-tech text-3xl sm:text-4xl font-bold mb-4'>Input Plugs</h2>
+            
+            <p class='cs-subtitle text-gray-400'>Most countries, we"ve got you covered.</p>
+            
+        </div>
+
+        <!-- Labeled Cards Grid -->
+        <div class='cs-grid grid grid-cols-1 md:grid-cols-4 gap-4'>
+            
+            <div class='cs-card-wrapper group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] cursor-pointer variant-neon'>
+                <div class='cs-card-inner relative h-full w-full bg-brand-panel rounded-[22px] flex flex-col'>
+                    <!-- Image -->
+                    <div class='cs-card-image-wrapper h-32 relative rounded-t-[22px] overflow-hidden'>
+                        <div class='cs-card-sprite snip BCx3 o-BCx3-220VAC-EU snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-500 ease-out'></div>
+                    </div>
+                    <!-- Content with Value Label -->
+                    <div class='cs-card-content text-center p-6 bg-brand-panel rounded-b-[22px]'>
+                        <span class='cs-card-value block text-3xl font-tech font-bold text-white mb-1 group-hover:text-brand-neon transition-colors duration-500 ease-out'>EU</span>
+                        <span class='cs-card-label block text-xs font-bold uppercase tracking-wider mb-2 transition-colors duration-500 ease-out text-brand-neon'>220VAC</span>
+                        <p class='cs-card-description text-xs text-gray-400 group-hover:text-white transition-colors duration-500 ease-out leading-snug'>Heavy duty 1.5m cable included with <b class='text-brand-neon'>European plug</b></p>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class='cs-card-wrapper group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] cursor-pointer variant-neon'>
+                <div class='cs-card-inner relative h-full w-full bg-brand-panel rounded-[22px] flex flex-col'>
+                    <!-- Image -->
+                    <div class='cs-card-image-wrapper h-32 relative rounded-t-[22px] overflow-hidden'>
+                        <div class='cs-card-sprite snip BCx3 o-BCx3-110VAC-US snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-500 ease-out'></div>
+                    </div>
+                    <!-- Content with Value Label -->
+                    <div class='cs-card-content text-center p-6 bg-brand-panel rounded-b-[22px]'>
+                        <span class='cs-card-value block text-3xl font-tech font-bold text-white mb-1 group-hover:text-brand-neon transition-colors duration-500 ease-out'>US & CA</span>
+                        <span class='cs-card-label block text-xs font-bold uppercase tracking-wider mb-2 transition-colors duration-500 ease-out text-brand-neon'>110VAC</span>
+                        <p class='cs-card-description text-xs text-gray-400 group-hover:text-white transition-colors duration-500 ease-out leading-snug'>Heavy duty 5 feet cable included with <b class='text-brand-neon'>USA & CANADA</b> plug</p>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class='cs-card-wrapper group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] cursor-pointer variant-neon'>
+                <div class='cs-card-inner relative h-full w-full bg-brand-panel rounded-[22px] flex flex-col'>
+                    <!-- Image -->
+                    <div class='cs-card-image-wrapper h-32 relative rounded-t-[22px] overflow-hidden'>
+                        <div class='cs-card-sprite snip BCx3 o-BCx3-220VAC-UK snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-500 ease-out'></div>
+                    </div>
+                    <!-- Content with Value Label -->
+                    <div class='cs-card-content text-center p-6 bg-brand-panel rounded-b-[22px]'>
+                        <span class='cs-card-value block text-3xl font-tech font-bold text-white mb-1 group-hover:text-brand-neon transition-colors duration-500 ease-out'>UK</span>
+                        <span class='cs-card-label block text-xs font-bold uppercase tracking-wider mb-2 transition-colors duration-500 ease-out text-brand-neon'>3-Pin Plug</span>
+                        <p class='cs-card-description text-xs text-gray-400 group-hover:text-white transition-colors duration-500 ease-out leading-snug'>Heavy duty 1.5m cable included with <b class='text-brand-neon'>UK</b> plug</p>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class='cs-card-wrapper group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] cursor-pointer variant-neon'>
+                <div class='cs-card-inner relative h-full w-full bg-brand-panel rounded-[22px] flex flex-col'>
+                    <!-- Image -->
+                    <div class='cs-card-image-wrapper h-32 relative rounded-t-[22px] overflow-hidden'>
+                        <div class='cs-card-sprite snip BCx3 o-BCx3-220VAC-AU snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-500 ease-out'></div>
+                    </div>
+                    <!-- Content with Value Label -->
+                    <div class='cs-card-content text-center p-6 bg-brand-panel rounded-b-[22px]'>
+                        <span class='cs-card-value block text-3xl font-tech font-bold text-white mb-1 group-hover:text-brand-neon transition-colors duration-500 ease-out'>AU</span>
+                        <span class='cs-card-label block text-xs font-bold uppercase tracking-wider mb-2 transition-colors duration-500 ease-out text-brand-neon'>220VAC</span>
+                        <p class='cs-card-description text-xs text-gray-400 group-hover:text-white transition-colors duration-500 ease-out leading-snug'>Heavy duty 1.5m cable included with <b class='text-brand-neon'>Australian</b> plug</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+  <!-- LABELED CARDS GRID - For items with prominent value display (speeds, ratings, etc.) -->
+<section id='specs' class='cs-section py-20 relative reveal'>
+    
+    <div class='cs-background-effect absolute inset-0 bg-brand-panel -skew-y-3 transform origin-top-left scale-110 z-0 border-t border-white/5'></div>
+    
+    <div class='cs-container container mx-auto px-6 relative z-10'>
+        <!-- Section Header with Subtitle -->
+        <div class='cs-header-wrapper max-w-3xl mx-auto text-center mb-16'>
+            <h2 class='cs-title font-tech text-3xl sm:text-4xl font-bold mb-4'>Inteligentne zarządzanie prędkością </h2>
+            
+            <p class='cs-subtitle text-gray-400'>Od delikatnego balansowania ogniw do szybkiego ładowania w sytuacjach awaryjnych. Masz pełną kontrolę. </p>
+            
+        </div>
+
+        <!-- Labeled Cards Grid -->
+        <div class='cs-grid grid grid-cols-1 md:grid-cols-5 gap-4'>
+            
+            <div class='cs-card-wrapper group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] cursor-pointer variant-neon'>
+                <div class='cs-card-inner relative h-full w-full bg-brand-panel rounded-[22px] flex flex-col'>
+                    <!-- Image -->
+                    <div class='cs-card-image-wrapper h-32 relative rounded-t-[22px] overflow-hidden'>
+                        <div class='cs-card-sprite snip BCx3 o-BCx3-220VAC-2A snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-500 ease-out'></div>
+                    </div>
+                    <!-- Content with Value Label -->
+                    <div class='cs-card-content text-center p-6 bg-brand-panel rounded-b-[22px]'>
+                        <span class='cs-card-value block text-3xl font-tech font-bold text-white mb-1 group-hover:text-brand-neon transition-colors duration-500 ease-out'>2A</span>
+                        <span class='cs-card-label block text-xs font-bold uppercase tracking-wider mb-2 transition-colors duration-500 ease-out text-brand-neon'>Tryb "Healer"</span>
+                        <p class='cs-card-description text-xs text-gray-400 group-hover:text-white transition-colors duration-500 ease-out leading-snug'>Powolne, głębokie ładowanie z pełną saturacją. Idealne do użytku nocnego, aby zrównoważyć ogniwa i maksymalnie wydłużyć ich żywotność.</p>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class='cs-card-wrapper group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] cursor-pointer variant-neon'>
+                <div class='cs-card-inner relative h-full w-full bg-brand-panel rounded-[22px] flex flex-col'>
+                    <!-- Image -->
+                    <div class='cs-card-image-wrapper h-32 relative rounded-t-[22px] overflow-hidden'>
+                        <div class='cs-card-sprite snip BCx3 o-BCx3-220VAC-4A snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-500 ease-out'></div>
+                    </div>
+                    <!-- Content with Value Label -->
+                    <div class='cs-card-content text-center p-6 bg-brand-panel rounded-b-[22px]'>
+                        <span class='cs-card-value block text-3xl font-tech font-bold text-white mb-1 group-hover:text-brand-neon transition-colors duration-500 ease-out'>4A</span>
+                        <span class='cs-card-label block text-xs font-bold uppercase tracking-wider mb-2 transition-colors duration-500 ease-out text-brand-neon'>Standardowy, codzienny</span>
+                        <p class='cs-card-description text-xs text-gray-400 group-hover:text-white transition-colors duration-500 ease-out leading-snug'>Dwa razy szybsza niż standardowe ładowarki, a jednocześnie wystarczająco delikatna do codziennego użytku.</p>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class='cs-card-wrapper group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] cursor-pointer variant-neon'>
+                <div class='cs-card-inner relative h-full w-full bg-brand-panel rounded-[22px] flex flex-col'>
+                    <!-- Image -->
+                    <div class='cs-card-image-wrapper h-32 relative rounded-t-[22px] overflow-hidden'>
+                        <div class='cs-card-sprite snip BCx3 o-BCx3-220VAC-6A snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-500 ease-out'></div>
+                    </div>
+                    <!-- Content with Value Label -->
+                    <div class='cs-card-content text-center p-6 bg-brand-panel rounded-b-[22px]'>
+                        <span class='cs-card-value block text-3xl font-tech font-bold text-white mb-1 group-hover:text-brand-neon transition-colors duration-500 ease-out'>6A</span>
+                        <span class='cs-card-label block text-xs font-bold uppercase tracking-wider mb-2 transition-colors duration-500 ease-out text-brand-neon'>Szybkie ładowanie</span>
+                        <p class='cs-card-description text-xs text-gray-400 group-hover:text-white transition-colors duration-500 ease-out leading-snug'>Dodatkowe ładowanie podczas przerwy w pracy. Odzyskaj 50% zasięgu w nieco ponad godzinę.</p>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class='cs-card-wrapper group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] cursor-pointer variant-muted'>
+                <div class='cs-card-inner relative h-full w-full bg-brand-panel rounded-[22px] flex flex-col'>
+                    <!-- Image -->
+                    <div class='cs-card-image-wrapper h-32 relative rounded-t-[22px] overflow-hidden'>
+                        <div class='cs-card-sprite snip BCx3 o-BCx3-220VAC-8A snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-500 ease-out'></div>
+                    </div>
+                    <!-- Content with Value Label -->
+                    <div class='cs-card-content text-center p-6 bg-brand-panel rounded-b-[22px]'>
+                        <span class='cs-card-value block text-3xl font-tech font-bold text-white mb-1 group-hover:text-brand-neon transition-colors duration-500 ease-out'>8A</span>
+                        <span class='cs-card-label block text-xs font-bold uppercase tracking-wider mb-2 transition-colors duration-500 ease-out text-gray-400'>Szybkie ładowanie</span>
+                        <p class='cs-card-description text-xs text-gray-400 group-hover:text-white transition-colors duration-500 ease-out leading-snug'>Duża moc. Tylko dla akumulatorów >20Ah z ogniwami wysokoprądowymi (Samsung 50E/40T).</p>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class='cs-card-wrapper group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] cursor-pointer variant-accent'>
+                <div class='cs-card-inner relative h-full w-full bg-brand-panel rounded-[22px] flex flex-col'>
+                    <!-- Image -->
+                    <div class='cs-card-image-wrapper h-32 relative rounded-t-[22px] overflow-hidden'>
+                        <div class='cs-card-sprite snip BCx3 o-BCx3-220VAC-10A snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-500 ease-out'></div>
+                    </div>
+                    <!-- Content with Value Label -->
+                    <div class='cs-card-content text-center p-6 bg-brand-panel rounded-b-[22px]'>
+                        <span class='cs-card-value block text-3xl font-tech font-bold text-white mb-1 group-hover:text-brand-neon transition-colors duration-500 ease-out'>10A</span>
+                        <span class='cs-card-label block text-xs font-bold uppercase tracking-wider mb-2 transition-colors duration-500 ease-out text-red-400'>Ultra-prędkość</span>
+                        <p class='cs-card-description text-xs text-gray-400 group-hover:text-white transition-colors duration-500 ease-out leading-snug'>Najszybsze ładowanie, ale naprawdę wyróżnia się, gdy ładuje jednocześnie dwie baterie za pomocą DATE Dx2C. 0-80% w mniej niż 45 minut. Wykorzystuje własne aktywne chłodzenie.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+  <!-- UNIFIED CARDS GRID - Super Flexible Template -->
+<section id='voltage' class='py-24 container mx-auto px-6 border-t border-white/5 reveal' >
+    
+    
+    
+    
+    <div class='container mx-auto px-4 sm:px-6 '>
+    
+        <!-- Section Header -->
+        
+        <div class='flex items-center gap-4 mb-16'>
+            
+            <div class='h-px flex-1 bg-gradient-to-r from-transparent to-brand-neon/30'></div>
+            
+            <h2 class='font-tech text-3xl font-bold text-white tracking-widest uppercase'>Architektura napięcia </h2>
+            
+            <div class='h-px flex-1 bg-gradient-to-l from-transparent to-brand-neon/30'></div>
+            
+        </div>
+        
+        
+
+        <!-- Cards Grid -->
+        <div class='grid grid-cols-1 md:grid-cols-3 gap-8'>
+            
+            
+            
+            <div class='group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] '>
+                
+                <div class='absolute inset-0 bg-brand-neon/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity'></div>
+                
+                <div class=' relative z-10 h-full w-full bg-[#1a1a1a] rounded-[22px] flex flex-col'>
+                    <!-- Image Container -->
+                    
+                    <div class='h-48 rounded-t-[22px] overflow-hidden relative  rounded-t-[22px]'>
+                        <div class='snip BCx3 o-BCx3-220VAC-42V snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-700'></div>
+                    </div>
+                    
+                    
+                    <!-- Content Container -->
+                    <div class='p-6 text-center flex flex-col flex-grow relative z-10'>
+                        <!-- VALUE (for labeled cards like speeds) -->
+                        
+                        
+                        <!-- TITLE -->
+                        
+                        <h3 class=' transition-colors duration-1000 ease-out text-2xl font-tech font-bold mb-2 text-white group-hover:text-brand-neon'>36V</h3>
+                        
+                        
+                        <!-- LABEL (for labeled cards) -->
+                        
+                        
+                        <!-- SUBTITLE / BADGE (for voltage cards, etc.) -->
+                        
+                        <div class='mb-3'><div class='flex flex-col gap-2 mb-4 justify-center items-center'>
+            <div class='inline-block px-4 py-1 rounded-full bg-white/5 border border-white/10'>
+                <span class='text-xl font-bold text-gray-200'>42.0V</span>
+                <span class='text-xs text-gray-500 group-hover:text-orange-400 transition-colors duration-300 ml-1'>100%</span>
+            </div><div class='h-6' aria-hidden='true'></div></div></div>
+                        
+                        
+                        <!-- CUSTOM HTML CONTENT -->
+                        
+                        
+                        <!-- DESCRIPTION -->
+                        
+                        <div class='text-sm leading-relaxed max-w-[320px] mx-auto text-gray-400 group-hover:text-white transition-text-color duration-500 ease-out  [&_b]:transition-colors [&_b]:duration-500 [&_b]:group-hover:text-brand-neon [&_strong]:transition-colors [&_strong]:duration-500 [&_strong]:group-hover:text-brand-neon'>Standardowe pełne ładowanie akumulatorov 36V.<br />Idealne do dojazdów miejskich i standardowych e-hulajnóg / e-rowerów.</div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+
+            
+            
+            <div class='group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] '>
+                
+                <div class='absolute inset-0 bg-brand-neon/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity'></div>
+                
+                <div class=' relative z-10 h-full w-full bg-[#1a1a1a] rounded-[22px] flex flex-col'>
+                    <!-- Image Container -->
+                    
+                    <div class='h-48 rounded-t-[22px] overflow-hidden relative  rounded-t-[22px]'>
+                        <div class='snip BCx3 o-BCx3-220VAC-54-6V snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-700'></div>
+                    </div>
+                    
+                    
+                    <!-- Content Container -->
+                    <div class='p-6 text-center flex flex-col flex-grow relative z-10'>
+                        <!-- VALUE (for labeled cards like speeds) -->
+                        
+                        
+                        <!-- TITLE -->
+                        
+                        <h3 class=' transition-colors duration-1000 ease-out text-2xl font-tech font-bold mb-2 text-brand-neon group-hover:text-brand-neon'>48V</h3>
+                        
+                        
+                        <!-- LABEL (for labeled cards) -->
+                        
+                        
+                        <!-- SUBTITLE / BADGE (for voltage cards, etc.) -->
+                        
+                        <div class='mb-3'><div class='flex flex-col gap-2 mb-4 justify-center items-center'>
+            <div class='inline-block px-4 py-1 rounded-full bg-white/5 border border-white/10'>
+                <span class='text-xl font-bold text-gray-200'>54.6V</span>
+                <span class='text-xs text-gray-500 group-hover:text-orange-400 transition-colors duration-300 ml-1'>100%</span>
+            </div>
+            <div class='text-sm font-medium'>
+                <span class='text-white'>or</span> <span class='text-brand-neon font-bold'>53.0V</span> <span class='text-brand-green'>(90% Life Mode)</span>
+            </div></div></div>
+                        
+                        
+                        <!-- CUSTOM HTML CONTENT -->
+                        
+                        
+                        <!-- DESCRIPTION -->
+                        
+                        <div class='text-sm leading-relaxed max-w-[320px] mx-auto text-gray-400 group-hover:text-white transition-text-color duration-500 ease-out  [&_b]:transition-colors [&_b]:duration-500 [&_b]:group-hover:text-brand-neon [&_strong]:transition-colors [&_strong]:duration-500 [&_strong]:group-hover:text-brand-neon'>Przełącz na <b class='text-brand-neon'>tryb 90%</b> (53V), aby podwoić żywotność ogniw,<br />lub wybierz <b class='text-brand-neon'>100%</b> (54.6V) dla maksymalnego zasięgu.</div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+
+            
+            
+            <div class='group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] '>
+                
+                <div class='absolute inset-0 bg-brand-neon/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity'></div>
+                
+                <div class=' relative z-10 h-full w-full bg-[#1a1a1a] rounded-[22px] flex flex-col'>
+                    <!-- Image Container -->
+                    
+                    <div class='h-48 rounded-t-[22px] overflow-hidden relative  rounded-t-[22px]'>
+                        <div class='snip BCx3 o-BCx3-220VAC-58-8V snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-700'></div>
+                    </div>
+                    
+                    
+                    <!-- Content Container -->
+                    <div class='p-6 text-center flex flex-col flex-grow relative z-10'>
+                        <!-- VALUE (for labeled cards like speeds) -->
+                        
+                        
+                        <!-- TITLE -->
+                        
+                        <h3 class=' transition-colors duration-1000 ease-out text-2xl font-tech font-bold mb-2 text-brand-neon group-hover:text-brand-neon'>52V</h3>
+                        
+                        
+                        <!-- LABEL (for labeled cards) -->
+                        
+                        
+                        <!-- SUBTITLE / BADGE (for voltage cards, etc.) -->
+                        
+                        <div class='mb-3'><div class='flex flex-col gap-2 mb-4 justify-center items-center'>
+            <div class='inline-block px-4 py-1 rounded-full bg-white/5 border border-white/10'>
+                <span class='text-xl font-bold text-gray-200'>58.8V</span>
+                <span class='text-xs text-gray-500 group-hover:text-orange-400 transition-colors duration-300 ml-1'>100%</span>
+            </div>
+            <div class='text-sm font-medium'>
+                <span class='text-white'>or</span> <span class='text-brand-neon font-bold'>57.0V</span> <span class='text-brand-green'>(90% Life Mode)</span>
+            </div></div></div>
+                        
+                        
+                        <!-- CUSTOM HTML CONTENT -->
+                        
+                        
+                        <!-- DESCRIPTION -->
+                        
+                        <div class='text-sm leading-relaxed max-w-[320px] mx-auto text-gray-400 group-hover:text-white transition-text-color duration-500 ease-out  [&_b]:transition-colors [&_b]:duration-500 [&_b]:group-hover:text-brand-neon [&_strong]:transition-colors [&_strong]:duration-500 [&_strong]:group-hover:text-brand-neon'>Pro-Performance. Utrzymuj optymalne parametry <Baterii> przy napięciu  lub odblokuj pełny potencjał przy .</div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</section>
+
+
+  <!-- FAQ SECTION (GLASSMORPHISM) -->
+<section class='py-20 bg-brand-dark/50 reveal'>
+    <div class='container mx-auto px-6'>
+        <div class='flex items-center gap-4 mb-12'>
+            <div class='h-px flex-1 bg-gradient-to-r from-transparent to-brand-neon/30'></div>
+            <h2 class='font-tech text-2xl font-bold text-white tracking-widest uppercase'>Eksperckie pytania i odpowiedzi </h2>
+            <div class='h-px flex-1 bg-gradient-to-l from-transparent to-brand-neon/30'></div>
+        </div>
+
+        <div class='max-w-4xl mx-auto space-y-4'>
+            
+            <details class='group bg-white/5 border border-white/10 rounded-xl overflow-hidden transition-all hover:bg-white/10 hover:border-brand-green/30'>
+                <summary class='px-6 py-4 cursor-pointer font-semibold text-white list-none flex justify-between items-center'>
+                    <span>Czy to działa z akumulatorami 36V?</span>
+                    <span class='text-2xl text-brand-green transition-transform group-open:rotate-45'>+</span>
+                </summary>
+                <div class='px-6 pb-4 text-gray-300 border-t border-white/5 pt-4'>
+                    <b class='text-brand-green'>Tak!</b> DATE BCx3 w pełni obsługuje systemy 36V. Po prostu wybierz tryb 36V, a naładuje
+ twoją baterię bezpiecznie do maksymalnie <b>42.0V</b>. Idealne dla mniejszych skuterów i standardowych e-rowerów. Oryginalne MATE CITY również
+ używają baterii 36V. Jeśli nie jesteś pewien, sprawdź etykietę swojej baterii!
+                </div>
+            </details>
+            
+
+            <details class='group bg-white/5 border border-white/10 rounded-xl overflow-hidden transition-all hover:bg-white/10 hover:border-brand-green/30'>
+                <summary class='px-6 py-4 cursor-pointer font-semibold text-white list-none flex justify-between items-center'>
+                    <span>Jakie są ustawienia dla akumulatorów 48V?</span>
+                    <span class='text-2xl text-brand-green transition-transform group-open:rotate-45'>+</span>
+                </summary>
+                <div class='px-6 pb-4 text-gray-300 border-t border-white/5 pt-4'>
+                    For 48V systems, you have two powerful options:
+        <ul class='list-disc ml-6 mt-2 space-y-1'>
+          <li><b class='text-brand-green'>90% Mode:</b> Charges to <b>53V</b>. Use this for daily riding to double your battery"s
+            lifespan.</li>
+          <li><b class='text-brand-green'>Tryb 100%:</b> Ładuje do <b>54.6V</b>. Używaj tego dla maksymalnego zasięgu podczas długich podróży. </li>
+        </ul>
+                </div>
+            </details>
+            
+
+            <details class='group bg-white/5 border border-white/10 rounded-xl overflow-hidden transition-all hover:bg-white/10 hover:border-brand-green/30'>
+                <summary class='px-6 py-4 cursor-pointer font-semibold text-white list-none flex justify-between items-center'>
+                    <span>Czy mogę użyć tego z moją baterią 52V?</span>
+                    <span class='text-2xl text-brand-green transition-transform group-open:rotate-45'>+</span>
+                </summary>
+                <div class='px-6 pb-4 text-gray-300 border-t border-white/5 pt-4'>
+                    Absolutely. Model DATE BCx3 został zaprojektowany z myślą o pracy z napięciem 52V:
+        <ul class='list-disc ml-6 mt-2 space-y-1'>
+          <li><b class='text-brand-green'>Tryb 90%:</b> Ładowanie do <b>57V</b> w celu ochrony chemii ogniw i wydłużenia żywotności cyklu.
+          </li>
+          <li><b class='text-brand-green'>Tryb 100%:</b> Ładowanie do <b>58.8V</b> dla maksymalnej mocy i zasięgu.</li>
+        </ul>
+                </div>
+            </details>
+            
+
+            <details class='group bg-white/5 border border-white/10 rounded-xl overflow-hidden transition-all hover:bg-white/10 hover:border-brand-green/30'>
+                <summary class='px-6 py-4 cursor-pointer font-semibold text-white list-none flex justify-between items-center'>
+                    <span>Czy ochroni mnie przed iskrami przy podłączaniu?</span>
+                    <span class='text-2xl text-brand-green transition-transform group-open:rotate-45'>+</span>
+                </summary>
+                <div class='px-6 pb-4 text-gray-300 border-t border-white/5 pt-4'>
+                    <b class='text-brand-green'>Kategorycznie TAK.</b> Najpierw podłącz adapter do baterii, a następnie żółte wtyczki <b>XT90S Anty-iskrowy</b>. Zintegrowany rezystor całkowicie eliminuje "trzask".
+                </div>
+            </details>
+            
+
+            <details class='group bg-white/5 border border-white/10 rounded-xl overflow-hidden transition-all hover:bg-white/10 hover:border-brand-green/30'>
+                <summary class='px-6 py-4 cursor-pointer font-semibold text-white list-none flex justify-between items-center'>
+                    <span>Dlaczego warto zainwestować w profesjonalną ładowarkę?</span>
+                    <span class='text-2xl text-brand-green transition-transform group-open:rotate-45'>+</span>
+                </summary>
+                <div class='px-6 pb-4 text-gray-300 border-t border-white/5 pt-4'>
+                    Potraktuj to jako <b class='text-brand-green'>ubezpieczenie dla Twojej baterii</b>. Podczas gdy tanie ładowarki oszczędzają na jakości, powodując przegrzewanie i uszkodzenia, profesjonalna ładowarka, taka jak DATE BCx3, wykorzystuje:
+        <ul class='list-disc ml-6 mt-2 space-y-1'>
+          <li><b class='text-brand-green'>Inteligentne zarządzanie temperaturą:</b> Utrzymuje ogniwa w chłodzie.</li>
+          <li><b class='text-brand-green'>Precyzyjne odcięcie:</b> Zapobiega przeładowaniu.</li>
+          <li><b class='text-brand-green'>Zmienną prędkość:</b> Daje Ci kontrolę.</li>
+        </ul>
+        <p class='mt-2'>Ochrona baterii o wartości ponad 500 euro za pomocą profesjonalnego urządzenia to najrozsądniejsza inwestycja.</p>
+                </div>
+            </details>
+            
+        </div>
+    </div>
+</section>
+
+
+  <!-- UNIFIED CARDS GRID - Super Flexible Template -->
+<section id='ecosystem' class='py-20 container mx-auto px-6 reveal' >
+    
+    
+    
+    
+    <div class='container mx-auto px-4 sm:px-6 '>
+    
+        <!-- Section Header -->
+        
+        <div class='flex items-center gap-4 mb-12'>
+            
+            <div class='h-px flex-1 bg-gradient-to-r from-transparent to-brand-neon/30'></div>
+            
+            <h2 class='font-tech text-2xl font-bold text-white tracking-widest uppercase'>Rozszerzenie ekosystemu </h2>
+            
+            <div class='h-px flex-1 bg-gradient-to-l from-transparent to-brand-neon/30'></div>
+            
+        </div>
+        
+        
+
+        <!-- Cards Grid -->
+        <div class='grid grid-cols-1 md:grid-cols-2 gap-16 items-center'>
+            
+            
+            
+            <div class='group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] '>
+                
+                <div class=' relative  h-full w-full bg-[#1a1a1a] rounded-[22px] flex flex-col'>
+                    <!-- Image Container -->
+                    
+                    <div class='h-64 relative bg-black/20 rounded-t-[22px]'>
+                        <div class='snip BCx3 o-Dx2C-30A-ONLY snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-700'></div>
+                    </div>
+                    
+                    
+                    <!-- Content Container -->
+                    <div class='p-8 text-center flex flex-col flex-grow relative z-10'>
+                        <!-- VALUE (for labeled cards like speeds) -->
+                        
+                        
+                        <!-- TITLE -->
+                        
+                        <h3 class=' transition-colors duration-1000 ease-out text-2xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-brand-neon'>Ładowanie podwójnej baterii</h3>
+                        
+                        
+                        <!-- LABEL (for labeled cards) -->
+                        
+                        
+                        <!-- SUBTITLE / BADGE (for voltage cards, etc.) -->
+                        
+                        
+                        <!-- CUSTOM HTML CONTENT -->
+                        
+                        
+                        <!-- DESCRIPTION -->
+                        
+                        <div class='text-base text-gray-400 group-hover:text-white transition-text-color duration-500 ease-out  [&_b]:transition-colors [&_b]:duration-500 [&_b]:group-hover:text-brand-neon [&_strong]:transition-colors [&_strong]:duration-500 [&_strong]:group-hover:text-brand-neon'><p>Uwolnij pełny potencjał. Połącz z <a href='/products/DATE-Dx2C' target='+blank' rel='noopener' class='text-brand-neon hover:underline'>DATE Dx2C</a><br />, aby ładować <b>dwa akumulatory jednocześnie</b> za pomocą jednej ładowarki DATE BCx3. </p></div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+
+            
+            
+            <div class='group relative rounded-3xl p-1 bg-gradient-to-b hover:-translate-y-2 from-white/10 to-white/5 hover:from-brand-neon/20 hover:to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,242,255,0.1)] '>
+                
+                <div class=' relative  h-full w-full bg-[#1a1a1a] rounded-[22px] flex flex-col'>
+                    <!-- Image Container -->
+                    
+                    <div class='h-64 relative bg-black/20 rounded-t-[22px]'>
+                        <div class='snip BCx3 o-BCx3-DIALS snip-sprite absolute inset-0 group-hover:scale-105 transition-all duration-700'></div>
+                    </div>
+                    
+                    
+                    <!-- Content Container -->
+                    <div class='p-8 text-center flex flex-col flex-grow relative z-10'>
+                        <!-- VALUE (for labeled cards like speeds) -->
+                        
+                        
+                        <!-- TITLE -->
+                        
+                        <h3 class=' transition-colors duration-1000 ease-out text-2xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-brand-neon'>Inteligentne zarządzanie temperaturą</h3>
+                        
+                        
+                        <!-- LABEL (for labeled cards) -->
+                        
+                        
+                        <!-- SUBTITLE / BADGE (for voltage cards, etc.) -->
+                        
+                        
+                        <!-- CUSTOM HTML CONTENT -->
+                        
+                        
+                        <!-- DESCRIPTION -->
+                        
+                        <div class='text-base text-gray-400 group-hover:text-white transition-text-color duration-500 ease-out  [&_b]:transition-colors [&_b]:duration-500 [&_b]:group-hover:text-brand-neon [&_strong]:transition-colors [&_strong]:duration-500 [&_strong]:group-hover:text-brand-neon'><p>Cicha praca. Wentylator włącza się tylko wtedy, gdy jest to konieczne.<br />Wyświetlacz LED zapewnia telemetrię napięcia i natężenia w czasie rzeczywistym. </p></div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</section>
+
+
+  <!-- PRODUCT GALLERY SECTION -->
+<section class='py-20 bg-brand-dark reveal'>
+    <div class='container mx-auto px-6'>
+        <div class='flex items-center gap-4 mb-12'>
+            <div class='h-px flex-1 bg-gradient-to-r from-transparent to-brand-neon/30'></div>
+            <h2 class='font-tech text-2xl font-bold text-white tracking-widest uppercase'>Galeria Produktów </h2>
+            <div class='h-px flex-1 bg-gradient-to-l from-transparent to-brand-neon/30'></div>
+        </div>
+
+        <div class='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4'>
+            
+            <div class='allow-overflow-light group relative hover:z-50 rounded-2xl bg-brand-panel border border-white/5 transition-all aspect-[4/3] cursor-pointer'>
+                <div class='extra no-tooltip BCx3 o-BCx3-220VAC-42V absolute inset-0 transition-all duration-300 group-hover:scale-110'></div>
+            </div>
+            
+
+            <div class='allow-overflow-light group relative hover:z-50 rounded-2xl bg-brand-panel border border-white/5 transition-all aspect-[4/3] cursor-pointer'>
+                <div class='extra no-tooltip BCx3 o-BCx3-220VAC-53V absolute inset-0 transition-all duration-300 group-hover:scale-110'></div>
+            </div>
+            
+
+            <div class='allow-overflow-light group relative hover:z-50 rounded-2xl bg-brand-panel border border-white/5 transition-all aspect-[4/3] cursor-pointer'>
+                <div class='extra no-tooltip BCx3 o-BCx3-220VAC-54-6V absolute inset-0 transition-all duration-300 group-hover:scale-110'></div>
+            </div>
+            
+
+            <div class='allow-overflow-light group relative hover:z-50 rounded-2xl bg-brand-panel border border-white/5 transition-all aspect-[4/3] cursor-pointer'>
+                <div class='extra no-tooltip BCx3 o-BCx3-220VAC-57V absolute inset-0 transition-all duration-300 group-hover:scale-110'></div>
+            </div>
+            
+
+            <div class='allow-overflow-light group relative hover:z-50 rounded-2xl bg-brand-panel border border-white/5 transition-all aspect-[4/3] cursor-pointer'>
+                <div class='extra no-tooltip BCx3 o-BCx3-220VAC-58-8V absolute inset-0 transition-all duration-300 group-hover:scale-110'></div>
+            </div>
+            
+
+            <div class='allow-overflow-light group relative hover:z-50 rounded-2xl bg-brand-panel border border-white/5 transition-all aspect-[4/3] cursor-pointer'>
+                <div class='extra no-tooltip BCx3 o-BCx3-220VAC-FRONT absolute inset-0 transition-all duration-300 group-hover:scale-110'></div>
+            </div>
+            
+
+            <div class='allow-overflow-light group relative hover:z-50 rounded-2xl bg-brand-panel border border-white/5 transition-all aspect-[4/3] cursor-pointer'>
+                <div class='extra no-tooltip BCx3 o-BCx3-DIALS absolute inset-0 transition-all duration-300 group-hover:scale-110'></div>
+            </div>
+            
+
+            <div class='allow-overflow-light group relative hover:z-50 rounded-2xl bg-brand-panel border border-white/5 transition-all aspect-[4/3] cursor-pointer'>
+                <div class='extra no-tooltip BCx3 o-BCx3-220VAC-2A absolute inset-0 transition-all duration-300 group-hover:scale-110'></div>
+            </div>
+            
+
+            <div class='allow-overflow-light group relative hover:z-50 rounded-2xl bg-brand-panel border border-white/5 transition-all aspect-[4/3] cursor-pointer'>
+                <div class='extra no-tooltip BCx3 o-BCx3-220VAC-4A absolute inset-0 transition-all duration-300 group-hover:scale-110'></div>
+            </div>
+            
+
+            <div class='allow-overflow-light group relative hover:z-50 rounded-2xl bg-brand-panel border border-white/5 transition-all aspect-[4/3] cursor-pointer'>
+                <div class='extra no-tooltip BCx3 o-BCx3-220VAC-6A absolute inset-0 transition-all duration-300 group-hover:scale-110'></div>
+            </div>
+            
+
+            <div class='allow-overflow-light group relative hover:z-50 rounded-2xl bg-brand-panel border border-white/5 transition-all aspect-[4/3] cursor-pointer'>
+                <div class='extra no-tooltip BCx3 o-BCx3-220VAC-8A absolute inset-0 transition-all duration-300 group-hover:scale-110'></div>
+            </div>
+            
+
+            <div class='allow-overflow-light group relative hover:z-50 rounded-2xl bg-brand-panel border border-white/5 transition-all aspect-[4/3] cursor-pointer'>
+                <div class='extra no-tooltip BCx3 o-BCx3-220VAC-10A absolute inset-0 transition-all duration-300 group-hover:scale-110'></div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- EXTRA IMAGES (Hidden duplicates for carousel) -->
+<div class='hidden'>
+    
+    <div class='extra BCx3 o-BCx3-220VAC-42V'></div>
+    
+
+    <div class='extra BCx3 o-BCx3-220VAC-53V'></div>
+    
+
+    <div class='extra BCx3 o-BCx3-220VAC-54-6V'></div>
+    
+
+    <div class='extra BCx3 o-BCx3-220VAC-57V'></div>
+    
+
+    <div class='extra BCx3 o-BCx3-220VAC-58-8V'></div>
+    
+
+    <div class='extra BCx3 o-BCx3-220VAC-FRONT'></div>
+    
+
+    <div class='extra BCx3 o-BCx3-DIALS'></div>
+    
+
+    <div class='extra BCx3 o-BCx3-220VAC-2A'></div>
+    
+
+    <div class='extra BCx3 o-BCx3-220VAC-4A'></div>
+    
+
+    <div class='extra BCx3 o-BCx3-220VAC-6A'></div>
+    
+
+    <div class='extra BCx3 o-BCx3-220VAC-8A'></div>
+    
+
+    <div class='extra BCx3 o-BCx3-220VAC-10A'></div>
+    
+</div>
+
+</div>

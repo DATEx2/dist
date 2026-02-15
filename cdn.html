@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDN Speed Battle: jsDelivr vs Custom S3</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; background: #f4f4f9; color: #333; }
+        h1 { text-align: center; margin-bottom: 40px; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .card h2 { margin-top: 0; font-size: 1.2rem; color: #555; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .url { font-family: monospace; font-size: 0.85rem; background: #eee; padding: 4px 8px; border-radius: 4px; word-break: break-all; color: #666; display: block; margin-bottom: 15px; }
+        .btn-group { display: flex; gap: 10px; margin-bottom: 15px; }
+        button { flex: 1; padding: 10px 20px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: opacity 0.2s; }
+        button:hover { opacity: 0.9; }
+        .btn-cold { background-color: #007bff; color: white; }
+        .btn-hot { background-color: #28a745; color: white; }
+        .stats { background: #222; color: #0f0; font-family: monospace; padding: 15px; border-radius: 6px; font-size: 0.9rem; min-height: 120px; white-space: pre-wrap; }
+        .note { font-size: 0.8rem; color: #888; margin-top: 5px; }
+        .warning { color: #d9534f; font-weight: bold; font-size: 0.9rem; background: #fdf0f0; padding: 10px; border-radius: 4px; margin-bottom: 20px; display: none; }
+    </style>
+</head>
+<body>
+
+    <h1>CDN Speed Battle</h1>
+
+    <div id="https-warning" class="warning">
+        ⚠️ Warning: You are running this on HTTPS. The "Custom S3" link is HTTP-only and will likely be blocked by your browser. Please save this file and open it locally.
+    </div>
+
+    <div class="card">
+        <h2>Option A: jsDelivr + GitHub</h2>
+        <span class="url">https://cdn.jsdelivr.net/gh/DATEx2/360@main/dist/js/DATEx2.bike.min.js</span>
+        <div class="btn-group">
+            <button class="btn-cold" onclick="runTest('jsdelivr', true)">❄️ Run Cold Test</button>
+            <button class="btn-hot" onclick="runTest('jsdelivr', false)">🔥 Run Hot Test</button>
+        </div>
+        <div id="out-jsdelivr" class="stats">Waiting to run...</div>
+    </div>
+
+    <div class="card">
+        <h2>Option B: Custom S3 (img.datex2.bike)</h2>
+        <span class="url">https://img.datex2.bike/website/DATEx2.bike.js</span>
+        <div class="btn-group">
+            <button class="btn-cold" onclick="runTest('custom', true)">❄️ Run Cold Test</button>
+            <button class="btn-hot" onclick="runTest('custom', false)">🔥 Run Hot Test</button>
+        </div>
+        <div id="out-custom" class="stats">Waiting to run...</div>
+        <div class="note">Note: If this fails or shows 0ms duration, the server might be missing CORS/Timing headers.</div>
+    </div>
+
+    <script>
+        // Check for HTTPS mismatch
+        if (location.protocol === 'https:') {
+            document.getElementById('https-warning').style.display = 'block';
+        }
+
+        const urls = {
+            jsdelivr: 'https://cdn.jsdelivr.net/gh/DATEx2/360@commit/2bcceaf4b34665971f25b1ea330cc072520e5566#diff-53396617c1e102ff38f3086d08f150f6b240bb39cdef793ddcba358bbfb13892',
+            custom: 'https://img.datex2.bike/website/DATEx2.bike.css'
+        };
+
+        // Store the last "cold" URL to simulate a "hot" reload
+        const activeUrls = { jsdelivr: '', custom: '' };
+
+        function runTest(type, isCold) {
+            const output = document.getElementById(`out-${type}`);
+            output.textContent = "Running network request...";
+            
+            // 1. Determine URL
+            let targetUrl;
+            if (isCold) {
+                // Add random query param to bypass cache
+                const rand = Math.floor(Math.random() * 1000000);
+                targetUrl = `${urls[type]}?v=${rand}`;
+                activeUrls[type] = targetUrl;
+            } else {
+                // Reuse the exact previous URL to test cache hit
+                targetUrl = activeUrls[type] || urls[type];
+            }
+
+            // 2. Create Script Tag
+            // We use script injection because 'fetch' might fail on CORS if headers aren't set,
+            // but script tags usually load fine (opaque). 
+            // However, Resource Timing API works best if the server sends "Timing-Allow-Origin".
+            const script = document.createElement('script');
+            script.src = targetUrl;
+            script.async = true;
+
+            // 3. Measure
+            script.onload = () => {
+                // Use slight delay to ensure Performance API is populated
+                setTimeout(() => {
+                    measurePerf(targetUrl, type, isCold);
+                    script.remove(); // Cleanup
+                }, 50);
+            };
+
+            script.onerror = () => {
+                output.textContent = `Error: Failed to load script.\nPossible causes:\n- Mixed Content (HTTPS page vs HTTP file)\n- Server down\n- Adblocker`;
+            };
+
+            document.body.appendChild(script);
+        }
+
+        function measurePerf(url, type, isCold) {
+            const output = document.getElementById(`out-${type}`);
+            // Get entries specifically for this URL
+            const entries = performance.getEntriesByName(url);
+            
+            if (entries.length === 0) {
+                output.textContent = "Loaded, but Resource Timing API blocked by CORS (missing Timing-Allow-Origin header).\nCannot show detailed stats.";
+                return;
+            }
+
+            // Get the most recent entry
+            const perf = entries[entries.length - 1];
+
+            // Calculate Metrics
+            // Note: If CORS is strict, some of these might be 0.
+            const dns = (perf.domainLookupEnd - perf.domainLookupStart).toFixed(2);
+            const tcp = (perf.connectEnd - perf.connectStart).toFixed(2);
+            const ttfb = (perf.responseStart - perf.requestStart).toFixed(2);
+            const download = (perf.responseEnd - perf.responseStart).toFixed(2);
+            const total = perf.duration.toFixed(2);
+
+            let result = `Test: ${isCold ? '❄️ COLD' : '🔥 HOT'}\n`;
+            result += `--------------------------\n`;
+            result += `Total Duration : ${total} ms  <-- WINNER METRIC\n`;
+            
+            if (total < 10 && !isCold) {
+                 result += `(Likely served from Browser Cache/RAM)\n`;
+            } else {
+                result += `--------------------------\n`;
+                result += `DNS Lookup     : ${dns} ms\n`;
+                result += `TCP Handshake  : ${tcp} ms\n`;
+                result += `TTFB (Waiting) : ${ttfb} ms\n`;
+                result += `Download Time  : ${download} ms`;
+            }
+            
+            output.textContent = result;
+        }
+    </script>
+
+</body>
+</html>
