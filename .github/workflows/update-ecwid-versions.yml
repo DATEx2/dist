@@ -19,8 +19,13 @@ jobs:
       - name: Detect changed products
         id: changes
         run: |
-          # Get list of changed product slugs (directory names)
-          SLUGS=$(git diff --name-only HEAD~1 HEAD | grep 'description\.' | sed 's|/.*||' | sort -u | tr '\n' ' ')
+          if [ "${{ github.event_name }}" = "push" ]; then
+            # Push event: detect only changed slugs
+            SLUGS=$(git diff --name-only HEAD~1 HEAD | grep '\.htm$' | sed 's|/.*||' | sort -u | tr '\n' ' ')
+          else
+            # Manual dispatch: scan all product directories
+            SLUGS=$(find . -maxdepth 2 -name '*.htm' -not -path './.github/*' | sed 's|^\./||;s|/.*||' | sort -u | tr '\n' ' ')
+          fi
           echo "slugs=$SLUGS" >> $GITHUB_OUTPUT
           echo "commit=${{ github.sha }}" >> $GITHUB_OUTPUT
           echo "Changed products: $SLUGS"
