@@ -1,0 +1,102 @@
+name: Update Ecwid Description Versions
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*/description.*.htm'
+
+jobs:
+  update-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # Need previous commit to detect changes
+
+      - name: Detect changed products
+        id: changes
+        run: |
+          # Get list of changed product slugs (directory names)
+          SLUGS=$(git diff --name-only HEAD~1 HEAD | grep 'description\.' | sed 's|/.*||' | sort -u | tr '\n' ' ')
+          echo "slugs=$SLUGS" >> $GITHUB_OUTPUT
+          echo "commit=${{ github.sha }}" >> $GITHUB_OUTPUT
+          echo "Changed products: $SLUGS"
+
+      - name: Update Ecwid placeholders
+        if: steps.changes.outputs.slugs != ''
+        env:
+          ECWID_STORE_ID: ${{ secrets.ECWID_STORE_ID }}
+          ECWID_API_KEY: ${{ secrets.ECWID_API_KEY }}
+          COMMIT_HASH: ${{ github.sha }}
+        run: |
+          STORE_ID="$ECWID_STORE_ID"
+          TOKEN="$ECWID_API_KEY"
+          API="https://app.ecwid.com/api/v3/$STORE_ID"
+          COMMIT="$COMMIT_HASH"
+
+          for SLUG in ${{ steps.changes.outputs.slugs }}; do
+            echo "=== Processing: $SLUG ==="
+            
+            # Search product by customSlug
+            SEARCH=$(curl -s "$API/products?keyword=$SLUG&token=$TOKEN")
+            PRODUCT_ID=$(echo "$SEARCH" | jq -r '.items[0].id // empty')
+            
+            if [ -z "$PRODUCT_ID" ]; then
+              echo "  ⚠ Product not found for slug: $SLUG"
+              continue
+            fi
+            
+            echo "  Found product ID: $PRODUCT_ID"
+            
+            # Fetch current product with descriptionTranslated
+            PRODUCT=$(curl -s "$API/products/$PRODUCT_ID?token=$TOKEN&responseFields=descriptionTranslated(en,ro,fr,de,es,it,pt,nl,sv,no,da,fi,pl,cs,sk,hu,hr,sl,lt,lv,et,bg,el,is,ar,ja,zh)")
+            
+            # Build update payload: replace data-version=OLD with data-version=NEW in all languages
+            PAYLOAD=$(echo "$PRODUCT" | jq --arg commit "$COMMIT" '
+              .descriptionTranslated | to_entries | map(
+                select(.value != null and .value != "" and (.value | test("data-version=")))
+                | .value |= gsub("data-version=[a-f0-9]+"; "data-version=" + $commit)
+              ) | from_entries | {descriptionTranslated: .}
+            ')
+            
+            if [ "$PAYLOAD" = '{"descriptionTranslated":{}}' ]; then
+              echo "  ⏭ No placeholders found, skipping"
+              continue
+            fi
+            
+            # Also update main description field
+            MAIN_DESC=$(echo "$PRODUCT" | jq -r --arg commit "$COMMIT" '
+              .descriptionTranslated.en // empty
+              | gsub("data-version=[a-f0-9]+"; "data-version=" + $commit)
+            ')
+            
+            if [ -n "$MAIN_DESC" ]; then
+              PAYLOAD=$(echo "$PAYLOAD" | jq --arg desc "$MAIN_DESC" '. + {description: $desc}')
+            fi
+            
+            echo "  Updating data-version to ${COMMIT:0:12}..."
+            
+            # PUT to Ecwid
+            RESPONSE=$(curl -s -w "\n%{http_code}" -X PUT "$API/products/$PRODUCT_ID?token=$TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "$PAYLOAD")
+            
+            HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+            BODY=$(echo "$RESPONSE" | sed '$d')
+            
+            if [ "$HTTP_CODE" = "200" ]; then
+              echo "  ✅ Updated successfully"
+            else
+              echo "  ❌ Failed ($HTTP_CODE): $BODY"
+            fi
+          done
+
+      - name: Purge jsDelivr cache
+        if: steps.changes.outputs.slugs != ''
+        run: |
+          for SLUG in ${{ steps.changes.outputs.slugs }}; do
+            echo "Purging CDN cache for $SLUG..."
+            curl -s "https://purge.jsdelivr.net/gh/DATEx2/products@main/$SLUG/" || true
+          done
