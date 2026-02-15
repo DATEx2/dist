@@ -55,12 +55,12 @@ jobs:
             
             echo "  Found product ID: $PRODUCT_ID"
             
-            # Fetch current product with descriptionTranslated
-            PRODUCT=$(curl -s "$API/products/$PRODUCT_ID?token=$TOKEN&responseFields=descriptionTranslated(en,ro,fr,de,es,it,pt,nl,sv,no,da,fi,pl,cs,sk,hu,hr,sl,lt,lv,et,bg,el,is,ar,ja,zh)")
+            # Fetch current product
+            PRODUCT=$(curl -s "$API/products/$PRODUCT_ID?token=$TOKEN")
             
             # Build update payload: replace data-version=OLD with data-version=NEW in all languages
             PAYLOAD=$(echo "$PRODUCT" | jq --arg commit "$COMMIT" '
-              .descriptionTranslated | to_entries | map(
+              (.descriptionTranslated // {}) | to_entries | map(
                 select(.value != null and .value != "" and (.value | test("data-version=")))
                 | .value |= gsub("data-version=[a-f0-9]+"; "data-version=" + $commit)
               ) | from_entries | {descriptionTranslated: .}
