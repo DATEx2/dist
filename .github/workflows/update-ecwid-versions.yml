@@ -45,12 +45,11 @@ jobs:
           for SLUG in ${{ steps.changes.outputs.slugs }}; do
             echo "=== Processing: $SLUG ==="
             
-            # Search product by customSlug
-            SEARCH=$(curl -s "$API/products?keyword=$SLUG&token=$TOKEN")
-            PRODUCT_ID=$(echo "$SEARCH" | jq -r '.items[0].id // empty')
+            # Lookup product ID from slug-map.json (no unreliable keyword search)
+            PRODUCT_ID=$(jq -r --arg slug "$SLUG" '.[$slug] // empty' slug-map.json)
             
             if [ -z "$PRODUCT_ID" ]; then
-              echo "  ⚠ Product not found for slug: $SLUG"
+              echo "  ⚠ No mapping found for slug: $SLUG in slug-map.json"
               continue
             fi
             
@@ -83,6 +82,7 @@ jobs:
             fi
             
             echo "  Updating data-version to ${COMMIT:0:12}..."
+            echo "  Payload size: $(echo "$PAYLOAD" | wc -c) bytes"
             
             # PUT to Ecwid
             RESPONSE=$(curl -s -w "\n%{http_code}" -X PUT "$API/products/$PRODUCT_ID?token=$TOKEN" \
@@ -93,7 +93,7 @@ jobs:
             BODY=$(echo "$RESPONSE" | sed '$d')
             
             if [ "$HTTP_CODE" = "200" ]; then
-              echo "  ✅ Updated successfully"
+              echo "  ✅ Updated successfully ($(echo "$BODY" | jq -r '.updateCount // "?"') fields)"
             else
               echo "  ❌ Failed ($HTTP_CODE): $BODY"
             fi
