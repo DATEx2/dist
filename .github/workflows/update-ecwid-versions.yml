@@ -56,7 +56,7 @@ jobs:
             echo "  Found product ID: $PRODUCT_ID"
             
             # Fetch current product
-            PRODUCT=$(curl -s "$API/products/$PRODUCT_ID?token=$TOKEN")
+            PRODUCT=$(curl -s -H "Authorization: Bearer $TOKEN" "$API/products/$PRODUCT_ID")
             
             # Build update payload: replace data-version=OLD with data-version=NEW in all languages
             PAYLOAD=$(echo "$PRODUCT" | jq --arg commit "$COMMIT" '
@@ -85,7 +85,8 @@ jobs:
             echo "  Payload size: $(echo "$PAYLOAD" | wc -c) bytes"
             
             # PUT to Ecwid
-            RESPONSE=$(curl -s -w "\n%{http_code}" -X PUT "$API/products/$PRODUCT_ID?token=$TOKEN" \
+            RESPONSE=$(curl -s -w "\n%{http_code}" -X PUT "$API/products/$PRODUCT_ID" \
+              -H "Authorization: Bearer $TOKEN" \
               -H "Content-Type: application/json" \
               -d "$PAYLOAD")
             
