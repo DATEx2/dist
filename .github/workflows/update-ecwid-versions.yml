@@ -1,10 +1,11 @@
 name: Update Ecwid Description Versions
 
 on:
+  workflow_dispatch:  # Manual trigger for testing
   push:
     branches: [main]
     paths:
-      - '*/description.*.htm'
+      - '**/*.htm'
 
 jobs:
   update-versions:
