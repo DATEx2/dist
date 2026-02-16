@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>DATE BCx3 Triple-Voltage Smart Charger | 36V / 48V / 52V Universal E-Bike Charger</title>
+    <meta name="description"
+        content="The ultimate Triple-Voltage charger (36V / 48V / 52V). Extend battery life with DATE BCx3: 2A-10A variable speed, Anti-Spark, and 90% Life-Extension modes.">
+
+        
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Tektur:wght@400..900&family=Inter:wght@400;700&family=Figtree:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <link href="../../../../../../website/src/product-details/product-details.tailwind.css" rel="stylesheet">
+
+    <!-- Critical Asset Styles (Loads Immediately - Required for Hero/First Paint) -->
+    <link rel="stylesheet" href="../../../../../../website/dist/css/Thumbs/BCx3/BCx3.css">
+
+    <!-- Large Asset Styles (Lazy Loaded - Below the Fold) -->
+    <link rel="stylesheet" href="../../../../../../website/dist/css/Thumbs/BCx3/BCx3-220VAC.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="../../../../../../website/dist/css/Thumbs/BCx3/BCx3-220VAC.css"></noscript>
+
+    <link rel="stylesheet" href="../../../../../../website/dist/css/Thumbs/BCx3/adapters.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="../../../../../../website/dist/css/Thumbs/BCx3/adapters.css"></noscript>
+    <link rel="stylesheet" href="../../../../../../website/src/product-details/product-details.css" type="text/css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="../../../../../../website/src/product-details/preview.js"></script>
+
+
+<div class="pdl-wrap ">
+
+</div>
+<script>
+(function() {
+    if (window.liveReloadInjected) return;
+    window.liveReloadInjected = true;
+    console.log("[Watcher] Connecting to Live Reload...");
+    const evtSource = new EventSource("http://localhost:35729/livereload");
+    evtSource.onopen = function() {
+        console.log("[Watcher] ✓ Connected to Live Reload");
+    };
+    evtSource.onmessage = function(e) {
+        if (e.data === 'reload') { 
+            console.log("[Watcher] Reloading..."); 
+            location.reload(); 
+        }
+    };
+    evtSource.onerror = function(err) {
+        console.error("[Watcher] ✗ Live Reload connection error:", err);
+        console.log("[Watcher] Retrying in 3s...");
+        evtSource.close();
+        setTimeout(() => { window.liveReloadInjected = false; location.reload(); }, 3000);
+    };
+})();
+</script>
