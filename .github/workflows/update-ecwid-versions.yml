@@ -22,10 +22,10 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
             # Push event: detect only changed slugs
-            SLUGS=$(git diff --name-only HEAD~1 HEAD | grep '\.htm$' | sed 's|/.*||' | sort -u | tr '\n' ' ')
+            SLUGS=$(git diff --name-only HEAD~1 HEAD | grep '\.htm$' | sed 's|^htm/products/||;s|/.*||' | sort -u | tr '\n' ' ')
           else
             # Manual dispatch: scan all product directories
-            SLUGS=$(find . -maxdepth 2 -name '*.htm' -not -path './.github/*' | sed 's|^\./||;s|/.*||' | sort -u | tr '\n' ' ')
+            SLUGS=$(find htm/products -maxdepth 2 -name '*.htm' -not -path './.github/*' | sed 's|^htm/products/||;s|/.*||' | sort -u | tr '\n' ' ')
           fi
           echo "slugs=$SLUGS" >> $GITHUB_OUTPUT
           echo "commit=${{ github.sha }}" >> $GITHUB_OUTPUT
@@ -46,8 +46,8 @@ jobs:
           for SLUG in ${{ steps.changes.outputs.slugs }}; do
             echo "=== Processing: $SLUG ==="
             
-            # Lookup product ID from slug-map.json (no unreliable keyword search)
-            PRODUCT_ID=$(jq -r --arg slug "$SLUG" '.[$slug] // empty' slug-map.json)
+            # Lookup product ID from htm/products/slug-map.json
+            PRODUCT_ID=$(jq -r --arg slug "$SLUG" '.[$slug] // empty' htm/products/slug-map.json)
             
             if [ -z "$PRODUCT_ID" ]; then
               echo "  ⚠ No mapping found for slug: $SLUG in slug-map.json"
